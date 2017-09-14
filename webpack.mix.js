@@ -12,4 +12,22 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   	.js('resources/assets/js/crud.js','public/js');
+
+
+mix.browserSync({
+    proxy: 'localhost:8000'
+});
+
+
+mix.js('node_modules/jquery/dist/jquery.min.js','public/js')
+    .js('node_modules/bootstrap/dist/js/bootstrap.min.js','public/js')
+    .js('node_modules/popper.js/dist/umd/popper.min.js','public/js');
+    
+
+mix.autoload({
+   'jquery': ['window.$', 'window.jQuery'],
+   'popper.js/dist/umd/popper.js': ['Popper'],
+    tether: ['Tether', 'window.Tether']
+});	
