@@ -14,4 +14,10 @@
         <br><br>
         @yield('content')
     </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="{{mix('js/popper.min.js')}}"></script>
+    <script src="{{mix('js/bootstrap.js')}}"></script>
+    <script src="{{mix('js/crud.js')}}"></script>
+
 </html>

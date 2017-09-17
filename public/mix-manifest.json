@@ -1,4 +1,12 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/bootstrap.min.js": "/js/bootstrap.min.js",
+    "/js/bootstrap.js": "/js/bootstrap.js",
+    "/js/popper.min.js": "/js/popper.min.js",
+    "/js/jquery.slim.min.js": "/js/jquery.slim.min.js",
+    "/js/jquery.min.js": "/js/jquery.min.js",
+    "/js/tether.min.js": "/js/tether.min.js",
+    "/js/jquery.js": "/js/jquery.js",
+    "/js/crud.js": "/js/crud.js"
 }

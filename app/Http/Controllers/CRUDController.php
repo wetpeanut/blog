@@ -21,7 +21,13 @@ class CRUDController extends Controller
     }
 
 
-
+        public function check()
+            {
+                if(Request::ajax()){
+                    return response()->json(['status'=>'Ajax request']);
+                }
+                return response()->json(['status'=>'Http request']);
+            }
 
      public function store(Request $request)
     {

@@ -1,11 +1,25 @@
 
+$(document).ready(function(){
+    $("#btn-save").click(function() {
+    $.ajax({
+        type:'post',
+        url: 'cruds',
+        data: {
+            'title': $('#title').val(),
+            'post': $('#post').val()
+        },
+        success: function(data) {
+            if ((data.errors)) {
+                $('.error').removeClass('hidden');
+                $('.error').text(data.errors.name);
+            } else {
+                $('.error').remove();
+                $('#table').append("<tr><td>"+ data.id +"</td><td>" + data.title + "</td> <td>" + data.post + "</td> <td><a href='{{action('CRUDController@edit', $post['id'])}}' class='btn btn-warning'> "+ Edit +"</a></td><td><form action='{{action('CRUDController@destroy', $post['id'])}}' method='post'><input name='_method' type='hidden' value='DELETE'><button class='btn btn-danger' type='submit'>"+ Delete +"</button></form></td></tr>");
+            }
+        },
+    });
+    $('#title').val('');
+    $('#post').val('');
 
-$('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var recipient = button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-title').text('New message to ' + recipient)
-  modal.find('.modal-body input').val(recipient)
-})
+    });
+});
