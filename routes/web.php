@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::resource('crud', 'CRUDController');
-
-
+Route::post('addPost','CRUDController@addPost');
+Route::post('edit','CRUDController@edit');
+Route::post('destroy','CRUDController@destroy');
+Route::get('/','CRUDController@index');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');

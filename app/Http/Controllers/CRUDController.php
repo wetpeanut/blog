@@ -21,23 +21,16 @@ class CRUDController extends Controller
     }
 
 
-        public function check()
-            {
-                if(Request::ajax()){
-                    return response()->json(['status'=>'Ajax request']);
-                }
-                return response()->json(['status'=>'Http request']);
-            }
+      
 
-     public function store(Request $request)
+     public function addPost(Request $request)
     {
-        $crud = new Crud([
-          'title' => $request->get('title'),
-          'post' => $request->get('post')
-        ]);
-
+    
+        $crud = new Crud();
+        $crud->title=$request->input('title');
+        $crud->post=$request->input('post');
         $crud->save();
-        return redirect('/crud');
+        return response()->json($crud);
     }
 
 
