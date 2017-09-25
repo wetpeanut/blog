@@ -27,7 +27,7 @@ class CRUDController extends Controller
     {
     
         $crud = new Crud();
-        $crud->title=$request->input('title');
+        $crud->title=$request->input('title');  
         $crud->post=$request->input('post');
         $crud->save();
         return response()->json($crud);
@@ -61,12 +61,12 @@ class CRUDController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-      public function destroy($id)
+      public function destroy(Request $request,$id)
       {
-          $crud = Crud::find($id);
-        	$crud->delete();
-
-         return redirect('/crud');
+       
+          Crud::find ( $req->id )->delete ();
+          return response ()->json ();  
+        
       }
     }
 

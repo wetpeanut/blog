@@ -18,11 +18,8 @@
         <td>  
         <a href="{{action('CRUDController@edit', $post['id'])}}" class="btn btn-warning">Edit</a></td>
         <td>
-       <form action="{{action('CRUDController@destroy', $post['id'])}}" method="post">
-            {{csrf_field()}}
-            <input name="_method" type="hidden" value="DELETE">
-            <button class="btn btn-danger" type="submit">Delete</button>
-          </form>
+          <button class="btn btn-danger" type="submit" id="btn-delete" data-target="deleteModal" data-toggle="modal">Delete</button>
+        </td>
       </tr>
       @endforeach
     </tbody>
@@ -66,6 +63,44 @@
     </div>
   </div>
 </div>
+
+
+<div id="deleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body">
+                    <h3 class="text-center">Are you sure you want to delete the following post?</h3>
+                    <br />
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="id">ID:</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="id_delete" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-2" for="title">Title:</label>
+                            <div class="col-sm-10">
+                                <input type="name" class="form-control" id="title_delete" disabled>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger delete" data-dismiss="modal">
+                            <span id="" class='glyphicon glyphicon-trash'></span> Delete
+                        </button>
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">
+                            <span class='glyphicon glyphicon-remove'></span> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <!--<script src="{{mix('js/jquery.js')}}"></script>
 <script src="{{mix('js/popper.min.js')}}"></script>
