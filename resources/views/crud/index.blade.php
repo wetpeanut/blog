@@ -18,7 +18,7 @@
         <td>  
         <a href="{{action('CRUDController@edit', $post['id'])}}" class="btn btn-warning">Edit</a></td>
         <td>
-          <button class="btn btn-danger" type="submit" id="btn-delete" data-target="deleteModal" data-toggle="modal">Delete</button>
+          <button class="btn btn-danger" type="submit" id="btn-delete" data-target="#deleteModal" data-toggle="modal">Delete</button>
         </td>
       </tr>
       @endforeach
@@ -65,6 +65,7 @@
 </div>
 
 
+
 <div id="deleteModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -82,7 +83,7 @@
                                 <input type="text" class="form-control" id="id_delete" disabled>
                             </div>
                         </div>
-                        <div class="form-group">
+                         <div class="form-group">
                             <label class="control-label col-sm-2" for="title">Title:</label>
                             <div class="col-sm-10">
                                 <input type="name" class="form-control" id="title_delete" disabled>

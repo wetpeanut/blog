@@ -30,19 +30,11 @@ $(function(){
                          $("#post").val('');
                 });
 
-            $(document).on('click', '.delete-modal', function() {
-           
-            console.log("asdsadas");
-
-            });
-
-
-            
-
-
-
-
 }); 
+
+$(document).on('click', '.deleteModal', function() {
+        console.log("adsasdsa");
+    });
 
 
 
