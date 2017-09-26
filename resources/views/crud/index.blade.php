@@ -2,7 +2,7 @@
 @section('content')
   <div class="container">
     <table class="table table-striped" id="table_post">
-      <button type="button"  id ="add-modal" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Add Post</button>
+      <button type="button"  id ="add-modal" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@mdo">Add Post</button>
         <th>ID</th>
         <th>Title</th>
         <th>Post</th>
@@ -11,12 +11,12 @@
     </thead>
     <tbody>
       @foreach($cruds as $post)
-      <tr>
-        <td>{{$post['id']}}</td>
-        <td>{{$post['title']}}</td>
-        <td>{{$post['post']}}</td>
+      <tr class="item{{$post['id']}}">
+        <td data-crud="id">{{$post['id']}}</td>
+        <td data-crud="title">{{$post['title']}}</td>
+        <td data-crud="post">{{$post['post']}}</td>
         <td>  
-        <a href="{{action('CRUDController@edit', $post['id'])}}" class="btn btn-warning">Edit</a></td>
+        <a data-target="#myModal" data-toggle="modal" class="btn btn-info" id="btn-update">Edit</a></td>
         <td>
           <button class="btn btn-danger" type="submit" id="btn-delete" data-target="#deleteModal" data-toggle="modal">Delete</button>
         </td>
@@ -28,11 +28,11 @@
   @endsection   
 
   <!--modal-->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">New Post</h5>
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">  
           <span aria-hidden="true">&times;</span>
         </button>
@@ -70,32 +70,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4 class="modal-title"></h4>
+                  <h4 class="modal-title">Delete Psot</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
                     <h3 class="text-center">Are you sure you want to delete the following post?</h3>
-                    <br />
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <label class="control-label col-sm-2" for="id">ID:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="id_delete" disabled>
-                            </div>
-                        </div>
-                         <div class="form-group">
-                            <label class="control-label col-sm-2" for="title">Title:</label>
-                            <div class="col-sm-10">
-                                <input type="name" class="form-control" id="title_delete" disabled>
-                            </div>
-                        </div>
-                    </form>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger delete" data-dismiss="modal">
-                            <span id="" class='glyphicon glyphicon-trash'></span> Delete
+                        <button type="button" class="btn btn-danger delete" data-dismiss="modal">Delete 
                         </button>
-                        <button type="button" class="btn btn-warning" data-dismiss="modal">
-                            <span class='glyphicon glyphicon-remove'></span> Close
+                        <button type="button" class="btn btn-warning" data-dismiss="modal">Close
                         </button>
                     </div>
                 </div>
@@ -107,4 +91,3 @@
 <script src="{{mix('js/popper.min.js')}}"></script>
 <script src="{{mix('js/bootstrap.min.js')}}"></script>
 <script src="{{mix('js/crud.js')}}"></script>-->
-
