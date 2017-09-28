@@ -38,10 +38,9 @@
         </button>
       </div>
       <div class="modal-body">
-           <form>
+           <form method="POST">
             <input type="hidden" name="_method" value="DELETE"> 
               <div class="form-group row">
-              {{csrf_field()}}  
                 <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Title</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control form-control-lg" id="title" placeholder="title" name="title">
@@ -68,9 +67,11 @@
 
 <div id="deleteModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
+          <form method="POST">
+            <input type="hidden" name="_method" value="DELETE">
             <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title">Delete Psot</h4>
+                  <h4 class="modal-title">Delete Post</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
@@ -84,6 +85,7 @@
                     </div>
                 </div>
             </div>
+          </form>
         </div>
     </div>
 

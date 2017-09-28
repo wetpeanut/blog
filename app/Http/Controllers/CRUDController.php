@@ -61,11 +61,11 @@ class CRUDController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-      public function destroy(Request $request,$id)
+      public function destroy(Request $request)
       {
-       
-          Crud::find ( $req->id )->delete ();
-          return response ()->json ();  
+          $crud=Crud::find($request->id); 
+          $crud->delete();
+          return response ()->json();  
         
       }
     }

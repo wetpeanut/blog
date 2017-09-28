@@ -9,11 +9,10 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
+*/ 
+Route::get('/','CRUDController@index');
+Route::post('destroy','CRUDController@destroy');
 Route::post('addPost','CRUDController@addPost');
 Route::post('edit','CRUDController@edit');
-Route::post('destroy','CRUDController@destroy');
-Route::get('/','CRUDController@index');
-Auth::routes();
+
 
