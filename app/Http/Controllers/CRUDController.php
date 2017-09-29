@@ -46,13 +46,13 @@ class CRUDController extends Controller
         return view('crud.edit', compact('crud','id'));
 
     }	
-      public function update(Request $request, $id)
+      public function update(Request $request)
     {
-        $crud = Crud::find($id);
-        $crud->title = $request->get('title');
-        $crud->post = $request->get('post');
+        $crud = Crud::find($request->$id);
+        $crud->title = $request->input('title');
+        $crud->post = $request->input('post');
         $crud->save();
-        return redirect('/crud');
+        return response()->json($crud);
     }
 
     /**
@@ -65,7 +65,8 @@ class CRUDController extends Controller
       {
           $crud=Crud::find($request->id); 
           $crud->delete();
-          return response ()->json();  
+          return response ()->json(['id'=>$request->id]);  
+
         
       }
     }

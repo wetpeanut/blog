@@ -2,7 +2,7 @@
 @section('content')
   <div class="container">
     <table class="table table-striped" id="table_post">
-      <button type="button"  id ="add-modal" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@mdo">Add Post</button>
+      <button type="button"  id ="btn-add" class="btn btn-primary" data-toggle="modal" data-target="#myModal" data-whatever="@mdo">Add Post</button>
         <th>ID</th>
         <th>Title</th>
         <th>Post</th>
@@ -56,7 +56,7 @@
       </div>
       <div class="modal-footer">
          <div class="col-md-2"></div>
-                <button type="button" class="btn btn-primary" id="btn-save" value="add">Submit</button>
+                <button type="button" class="btn btn-primary" id="btn-save" value="add" data-add="Add" data-update="Update" >Submit</button>
         </div>
       </div>
     </div>

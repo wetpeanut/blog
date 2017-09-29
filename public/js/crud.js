@@ -79,8 +79,9 @@ module.exports = __webpack_require__(44);
 
 $(function () {
 
-        $(document).on('click', '#add-modal', function () {
-                console.log("adasdsadasd");
+        $(document).on('click', '#btn-add', function () {
+
+                $("#myModal").find(".modal-title").html("Add Post");
         });
 
         $.ajaxSetup({
@@ -89,7 +90,7 @@ $(function () {
                 }
         });
 
-        $("#btn-save").click(function () {
+        $("button[data-add='Add']").click(function () {
                 $.ajax({
                         type: 'POST',
                         url: '/addPost',
@@ -104,7 +105,7 @@ $(function () {
                                         $('.error').text(data.errors.name);
                                 } else {
                                         $('.error').remove();
-                                        $('#table_post').append("<tr class='item" + data.id + "' data-><td>" + data.id + "</td><td>" + data.title + "</td> <td>" + data.post + "</td> <td><a  data-target='#myModal' data-toggle='modal'class='btn btn-warning'>Edit</a></td><td><button class='btn btn-danger' type='submit' id='btn-delete'>DELETE</button></td></tr>");
+                                        $('#table_post').append("<tr class='item" + data.id + "' data-><td>" + data.id + "</td><td>" + data.title + "</td> <td>" + data.post + "</td> <td><a  data-target='#myModal' data-toggle='modal'class='btn btn-info'>Edit</a></td><td><button class='btn btn-danger' type='submit' id='btn-delete' data-target='#deleteModal' data-toggle='modal'>DELETE</button></td></tr>");
                                 }
                         }
                 });
@@ -116,13 +117,20 @@ $(function () {
 
         $(document).on('click', '#btn-update', function () {
 
-                $("#myModal").find(".modal-title").html("Update");
+                $("#myModal").find(".modal-title").html("Update Post");
                 var title = $(this).closest('tr').find('td[data-crud="title"]').html();
                 var post = $(this).closest('tr').find('td[data-crud="post"]').html();
                 var id = $(this).closest('tr').find('td[data-crud="id"]').html();
-                console.log(id);
                 $('#title').val(title);
                 $('#post').val(post);
+        });
+
+        $("button[data-update='Update']").click(function () {
+                console.log(1231);
+        });
+
+        $("button[data-add='Add']").click(function () {
+                console.log(1);
         });
 
         $(document).on('click', '#btn-delete', function () {
@@ -145,7 +153,7 @@ $(function () {
                         },
                         success: function success(data) {
                                 if (data.errors) {} else {
-                                        console.log(id);
+                                        $(".item" + data.id + "").remove();
                                 }
                         }
 
